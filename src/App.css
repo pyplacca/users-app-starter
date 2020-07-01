@@ -1,5 +1,104 @@
+:root {
+	--color: #99b898;
+	--color-2: #e84a5f;
+	--bg: #f4f6ff;
+	--fade-color: #d2d2d2;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 .App {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+	height: 100vh;
+  	display: flex;
+  	font-family: Roboto, sans-serif;
+}
+
+.entry,
+.display {
+	height: 100%;
+}
+
+.entry {
+	flex-basis: 47%;
+	background-color: var(--bg);
+	border-right: 1px solid #ebebeb;
+}
+
+.entry form {
+	min-width: 240px;
+	max-width: 70%;
+	margin: 170px auto 0 auto;
+}
+
+.entry form input {
+	width: 100%;
+
+	padding: 17px;
+	margin: 10px 0;
+	
+	border: 1px solid var(--fade-color);
+	border-radius: 6px;
+	outline: none;
+
+	font-family: Roboto, sans-serif;
+	
+	transition-property: border-color, box-shadow;
+	transition: all .15s ease-in-out;
+}
+
+.entry form input[type="submit"] {
+	color: #fff;
+	background-color: var(--color);
+	
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+	font-weight: bold; 
+}
+
+.entry form input:focus {
+	border-color: var(--color);
+	box-shadow: 0 0 6px rgba(153, 184, 152, .27)
+}
+
+.entry form input:focus::placeholder {
+	color: var(--fade-color);
+}
+
+.display {
+	flex-basis: 63%;
+	
+	display: flex;
+	flex-direction: column;
+}
+
+.display > h3 {
+	color: #fff;
+	background-color: var(--color-2);
+
+	padding: 20px 50px;
+	border-bottom: 1px solid #ebebeb;
+	
+	text-transform: capitalize;
+	font-size: 1.5rem;
+	font-weight: normal;
+}
+
+.users {
+	padding: 10px 50px;
+	overflow-y: auto;
+}
+
+.user-item {
+	padding: 15px 0;
+	margin-top: 10px;
+	border-bottom: 1px solid #f0f0f0;
+	font-weight: normal;
+}
+
+.user-item .email {
+	color: var(--fade-color);
 }
