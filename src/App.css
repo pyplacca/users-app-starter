@@ -17,88 +17,94 @@
   	font-family: Roboto, sans-serif;
 }
 
-.entry,
-.display {
+.App__user-form_container,
+.App__users-display {
 	height: 100%;
 }
 
-.entry {
+.App__user-form_container {
 	flex-basis: 47%;
 	background-color: var(--bg);
 	border-right: 1px solid #ebebeb;
 }
 
-.entry form {
+.App__user-form_container form {
 	min-width: 240px;
 	max-width: 70%;
 	margin: 170px auto 0 auto;
 }
 
-.entry form input {
+.App__user-form_container form input {
 	width: 100%;
 
 	padding: 17px;
 	margin: 10px 0;
-	
+
 	border: 1px solid var(--fade-color);
 	border-radius: 6px;
 	outline: none;
 
 	font-family: Roboto, sans-serif;
-	
+
 	transition-property: border-color, box-shadow;
 	transition: all .15s ease-in-out;
 }
 
-.entry form input[type="submit"] {
+.App__user-form_container form input[type="submit"] {
 	color: #fff;
 	background-color: var(--color);
-	
+
 	letter-spacing: .1rem;
 	text-transform: uppercase;
-	font-weight: bold; 
+	font-weight: bold;
 }
 
-.entry form input:focus {
+.App__user-form_container form input:focus {
 	border-color: var(--color);
 	box-shadow: 0 0 6px rgba(153, 184, 152, .27)
 }
 
-.entry form input:focus::placeholder {
+.App__user-form_container form input:focus::placeholder {
 	color: var(--fade-color);
 }
 
-.display {
+.App__users-display {
 	flex-basis: 63%;
-	
+
 	display: flex;
 	flex-direction: column;
 }
 
-.display > h3 {
+.App__users-display > h3 {
 	color: #fff;
 	background-color: var(--color-2);
 
 	padding: 20px 50px;
 	border-bottom: 1px solid #ebebeb;
-	
+
 	text-transform: capitalize;
 	font-size: 1.5rem;
 	font-weight: normal;
 }
 
-.users {
+.App__users {
 	padding: 10px 50px;
 	overflow-y: auto;
 }
 
-.user-item {
+.App__user-item {
 	padding: 15px 0;
 	margin-top: 10px;
 	border-bottom: 1px solid #f0f0f0;
-	font-weight: normal;
+	transform: 	translateX(-50%);
+	animation: pushIn .5s cubic-bezier(0.42, 0, 0.07, 1.21) .1s forwards
 }
 
-.user-item .email {
+.App__user-item .email {
+	font-weight: normal;
 	color: var(--fade-color);
+}
+
+@keyframes pushIn {
+	to { transform: translateX(0); }
 }
