@@ -1,37 +1,24 @@
 import React from "react";
 import "./App.css";
+import { connect } from 'react-redux'
 import UserItem from "./components/UserItem"
 import UserForm from "./components/UserForm"
 
+
 class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			users: [],
-		}
-
-		this.createNewUser = this.createNewUser.bind(this)
-	}
-
-	createNewUser (user) {
-		// add new user to users list
-		this.setState({
-			users: [...this.state.users, user]
-		})
-	}
 
 	render() {
 		return (
 			<div className="App">
 				<div className="App__user-form_container">
-					<UserForm submitCallback={this.createNewUser}/>
+					<UserForm/>
 				</div>
 
 				<div className="App__users-display">
 					<h3>List of users</h3>
 					<div className="App__users">
 						{
-							this.state.users.map(
+							this.props.users.map(
 								(user, i) => <UserItem {...user} key={i}/>
 							)
 						}
@@ -42,4 +29,8 @@ class App extends React.Component {
 	}
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+	users: state.users || []
+})
+
+export default connect(mapStateToProps)(App);

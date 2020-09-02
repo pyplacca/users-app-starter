@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { addNewUser } from '../store/actions'
 
 class UserForm extends React.Component {
 	constructor (props) {
@@ -20,36 +22,48 @@ class UserForm extends React.Component {
 
 	handleSubmit (event) {
 		event.preventDefault()
-		this.props.submitCallback(this.state)
+		// add new user to users list in redux store
+		this.props.addNewUser(this.state)
+		// reset form
+		this.setState({
+			name: '',
+			email: '',
+		})
 	}
 
 	render () {
 		return (
-		<form
-			onSubmit={this.handleSubmit}
-		>
-			<input
-				type="text"
-				name="name"
-				value={this.state.name}
-				placeholder="Name"
-				onChange={this.handleChange}
-			/>
-			<br/>
-			<input
-				type="email"
-				name="email"
-				value={this.state.email}
-				placeholder="Email"
-				onChange={this.handleChange}
-			/>
-			<br/>
-			<input
-				type="submit"
-			/>
-		</form>
+			<form
+				onSubmit={this.handleSubmit}
+			>
+				<input
+					type="text"
+					name="name"
+					value={this.state.name}
+					placeholder="Name"
+					onChange={this.handleChange}
+				/>
+				<br/>
+				<input
+					type="email"
+					name="email"
+					value={this.state.email}
+					placeholder="Email"
+					onChange={this.handleChange}
+				/>
+				<br/>
+				<input
+					type="submit"
+				/>
+			</form>
 		)
 	}
 }
 
-export default UserForm
+
+const mapDispatchToProps = {
+	addNewUser
+}
+
+
+export default connect(null, mapDispatchToProps)(UserForm)
