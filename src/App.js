@@ -8,6 +8,7 @@ import UserForm from "./components/UserForm"
 class App extends React.Component {
 
 	render() {
+		const {users} = this.props
 		return (
 			<div className="App">
 				<div className="App__user-form_container">
@@ -18,9 +19,15 @@ class App extends React.Component {
 					<h3>List of users</h3>
 					<div className="App__users">
 						{
-							this.props.users.map(
-								(user, i) => <UserItem {...user} key={i}/>
+							users.length ?
+							users.map(
+								user => <UserItem {...user} key={user.id}/>
 							)
+							:
+							<p style={{
+								textAlign: "center",
+								marginTop: "4rem"
+							}}>No users to display</p>
 						}
 					</div>
 				</div>
@@ -30,7 +37,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-	users: state.users || []
+	users: state.users
 })
 
 export default connect(mapStateToProps)(App);

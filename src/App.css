@@ -1,14 +1,42 @@
 :root {
 	--color: #99b898;
 	--color-2: #e84a5f;
+	--color-fade: grey;
 	--bg: #f4f6ff;
-	--fade-color: #d2d2d2;
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+span[aria-label="icon"] {
+	cursor: pointer;
+	text-decoration: none;
+	color: #000;
+	-webkit-transition: transform .2s ease;
+	-moz-transition: transform .2s ease;
+	-ms-transition: transform .2s ease;
+	-o-transition: transform .2s ease;
+	transition: transform .2s ease;
+	font-size: 1.2rem;
+}
+
+span[aria-label="icon"]:hover {
+	-webkit-transform: scale(1.15);
+	-moz-transform: scale(1.15);
+	-ms-transform: scale(1.15);
+	-o-transform: scale(1.15);
+	transform: scale(1.15);
+}
+
+span[aria-label="icon"]:active {
+	-webkit-transform: scale(.87);
+	-moz-transform: scale(.87);
+	-ms-transform: scale(.87);
+	-o-transform: scale(.87);
+	transform: scale(.87);
 }
 
 .App {
@@ -28,29 +56,28 @@
 	border-right: 1px solid #ebebeb;
 }
 
-.App__user-form_container form {
-	min-width: 240px;
-	max-width: 70%;
+form {
+	width: clamp(240px, 70%, 420px);
 	margin: 170px auto 0 auto;
 }
 
-.App__user-form_container form input {
+form input {
 	width: 100%;
 
 	padding: 17px;
 	margin: 10px 0;
 
-	border: 1px solid var(--fade-color);
+	border: 1px solid var(--color-fade);
 	border-radius: 6px;
 	outline: none;
 
 	font-family: Roboto, sans-serif;
 
-	transition-property: border-color, box-shadow;
+	transition-property: border-color, box-shadow, border-width	;
 	transition: all .15s ease-in-out;
 }
 
-.App__user-form_container form input[type="submit"] {
+form input[type="submit"] {
 	color: #fff;
 	background-color: var(--color);
 
@@ -59,13 +86,13 @@
 	font-weight: bold;
 }
 
-.App__user-form_container form input:focus {
+form input:focus {
 	border-color: var(--color);
-	box-shadow: 0 0 6px rgba(153, 184, 152, .27)
+	box-shadow: 0 0 6px #ebebeb;
 }
 
-.App__user-form_container form input:focus::placeholder {
-	color: var(--fade-color);
+form input:focus::placeholder {
+	color: #d2d2d2;
 }
 
 .App__users-display {
@@ -89,22 +116,36 @@
 
 .App__users {
 	padding: 10px 50px;
-	overflow-y: auto;
+	overflow: hidden auto;
 }
 
 .App__user-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	padding: 15px 0;
 	margin-top: 10px;
 	border-bottom: 1px solid #f0f0f0;
-	transform: 	translateX(-50%);
-	animation: pushIn .5s cubic-bezier(0.42, 0, 0.07, 1.21) .1s forwards
+	/*opacity: 0;*/
+	transform: 	translateX(-110%);
+	animation: pushIn .55s cubic-bezier(0.42, 0, 0.07, 1.21) .1s forwards
 }
 
-.App__user-item .email {
-	font-weight: normal;
-	color: var(--fade-color);
+.App__user-item .icons > *:not(:last-child) {
+	margin-right: 30px;
 }
+
+
+.App__user-item__info .email {
+	font-weight: normal;
+	color: var(--color-fade);
+}
+
 
 @keyframes pushIn {
 	to { transform: translateX(0); }
+}
+
+@keyframes pushOut {
+	to { transform: translateX(110%); }
 }

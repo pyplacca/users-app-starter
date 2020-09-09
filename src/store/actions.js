@@ -1,13 +1,12 @@
-export function addNewUser (user) {
+function createAction(type, payload) {
 	return {
-		type: 'ADD_USER',
-		payload: user
+		type,
+		payload
 	}
 }
 
-// export function deleteUser (userId) {
-// 	return {
-// 		type: 'DELETE_USER',
-// 		payload: userId
-// 	}
-// }
+export const addNewUser = user 	 => createAction('ADD_USER', user)
+
+export const deleteUser = userId => createAction('DELETE_USER', userId)
+
+export const updateUser = user => createAction('UPDATE_USER', user)

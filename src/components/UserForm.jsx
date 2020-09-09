@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { v4 as uuid4 } from 'uuid'
 import { addNewUser } from '../store/actions'
 
 class UserForm extends React.Component {
@@ -11,7 +12,7 @@ class UserForm extends React.Component {
 		}
 
 		this.handleChange = this.handleChange.bind(this)
-		this.handleSubmit = this.handleSubmit.bind(this)
+		this.createNewUser = this.createNewUser.bind(this)
 	}
 
 	handleChange ({target}) {
@@ -20,10 +21,12 @@ class UserForm extends React.Component {
 		})
 	}
 
-	handleSubmit (event) {
+	createNewUser (event) {
 		event.preventDefault()
 		// add new user to users list in redux store
-		this.props.addNewUser(this.state)
+		this.props.addNewUser({
+			...this.state, id: uuid4()
+		})
 		// reset form
 		this.setState({
 			name: '',
@@ -34,7 +37,7 @@ class UserForm extends React.Component {
 	render () {
 		return (
 			<form
-				onSubmit={this.handleSubmit}
+				onSubmit={this.createNewUser}
 			>
 				<input
 					type="text"
@@ -62,8 +65,7 @@ class UserForm extends React.Component {
 
 
 const mapDispatchToProps = {
-	addNewUser
+	addNewUser,
 }
-
 
 export default connect(null, mapDispatchToProps)(UserForm)
