@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Router from './Router';
+// import Router from './Router';
+import App from './App'
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware } from 'redux';
@@ -11,7 +12,6 @@ import { getFirestore, reduxFirestore } from 'redux-firestore';
 import firebase from './firebase/config';
 import usersReducer from './store/reducer';
 
-console.log(firebase)
 
 const store = createStore(
 	usersReducer,
@@ -29,12 +29,10 @@ const store = createStore(
 	// enhancer(s)
 );
 
-console.log(store)
-
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<Router />
+			<App />
 		</Provider>
 	</React.StrictMode>,
 	document.getElementById('root')

@@ -12,6 +12,7 @@ function UserItem ({name, email, id, deleteUser}) {
 				<h5 className="email">{email}</h5>
 			</div>
 			<div className="icons">
+			{/*
 				<Link to={`/edit/${id}`}>
 					<span
 						title="edit user"
@@ -20,6 +21,7 @@ function UserItem ({name, email, id, deleteUser}) {
 						aria-hidden="true"
 					>&#9998;</span>
 				</Link>
+			*/}
 				<span
 					title="delete user"
 					role="img"
