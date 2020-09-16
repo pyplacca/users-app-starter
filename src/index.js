@@ -11,22 +11,25 @@ import { getFirestore, reduxFirestore } from 'redux-firestore';
 import firebase from './firebase/config';
 import usersReducer from './store/reducer';
 
+console.log(firebase)
 
 const store = createStore(
 	usersReducer,
 	// middleware(s)
 	compose(
 		// thunk adds extra functionality to our app and this setup syncs our store with firebase
+		reduxFirestore(firebase),
 		applyMiddleware(thunk.withExtraArgument({
 			getFirestore,
 			getFirebase
 		})),
+		reactReduxFirebase(firebase),
 		// setup firestore and firebase to work with our actions
-		reduxFirestore(firebase),
-		// reactReduxFirebase(firebase)
 	)
 	// enhancer(s)
 );
+
+console.log(store)
 
 ReactDOM.render(
 	<React.StrictMode>
