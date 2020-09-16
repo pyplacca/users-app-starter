@@ -21,7 +21,7 @@ class EditUserForm extends React.Component {
 	editUser (event) {
 		event.preventDefault()
 		// add new user to users list in redux store
-		const {user, updateUser, history} = this.props
+		const {updateUser, history} = this.props
 		updateUser(this.state)
 		history.push('/')
 	}
