@@ -19,7 +19,7 @@ function usersReducer (state=initialState, action) {
 			return {
 				...state,
 				users: state.users.filter(
-					user => user.id !== payload
+					user => user.id !== payload.id
 				)
 			}
 
