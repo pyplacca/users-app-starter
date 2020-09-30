@@ -7,9 +7,6 @@ import { getUsers } from './store/actions'
 
 
 class App extends React.Component {
-	constructor(props) {
-		super(props)
-	}
 
 	componentDidMount() {
 		this.props.getUsers()
