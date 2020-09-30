@@ -1,5 +1,5 @@
 function performDatabaseAction(type, payload) {
-	return (undefined, _, {getFirestore}) => {
+	return (dispatch, getState, {getFirestore}) => {
 		// get or set user's document reference from firestore database.
 		const docRef = getFirestore().collection('users').doc(payload.id);
 		// perform specified action on database
@@ -16,7 +16,7 @@ export const addNewUser = user 	 => performDatabaseAction('ADD_USER', user)
 export const deleteUser = userId => performDatabaseAction('DELETE_USER', {id: userId})
 
 export const getUsers = () => {
-	return (dispatch, undefined, {getFirestore}) => {
+	return (dispatch, getState, {getFirestore}) => {
 		getFirestore()
 			.collection('users')
 			.orderBy('name')
