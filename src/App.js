@@ -7,8 +7,8 @@ import { getUsers } from './store/actions'
 
 
 class App extends React.Component {
-
 	componentDidMount() {
+		// retrieve and display all users from database
 		this.props.getUsers()
 	}
 
@@ -45,8 +45,4 @@ const mapStateToProps = (state) => ({
 	users: state.users
 })
 
-const mapDispatchToProps = ({
-	getUsers
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, { getUsers })(App);
