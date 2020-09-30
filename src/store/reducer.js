@@ -23,6 +23,12 @@ function usersReducer (state=initialState, action) {
 				)
 			}
 
+		case 'GET_USERS':
+			return {
+				...state,
+				users: payload
+			}
+
 		case 'UPDATE_USER':
 			return {
 				...state,

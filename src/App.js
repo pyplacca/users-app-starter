@@ -3,9 +3,17 @@ import "./App.css";
 import { connect } from 'react-redux'
 import UserItem from "./components/UserItem"
 import UserForm from "./components/UserForm"
+import { getUsers } from './store/actions'
 
 
 class App extends React.Component {
+	constructor(props) {
+		super(props)
+	}
+
+	componentDidMount() {
+		this.props.getUsers()
+	}
 
 	render() {
 		const {users} = this.props
@@ -40,4 +48,8 @@ const mapStateToProps = (state) => ({
 	users: state.users
 })
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = ({
+	getUsers
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
