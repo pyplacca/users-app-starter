@@ -1,8 +1,7 @@
 import React from "react";
 import "./App.css";
 import { connect } from 'react-redux'
-import UserItem from "./components/UserItem"
-import UserForm from "./components/UserForm"
+import { UserItem, UserForm } from "./components"
 import { getUsers } from './store/actions'
 
 

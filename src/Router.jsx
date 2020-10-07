@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import App from './App'
-import EditUserForm from './components/EditUserForm'
+import { EditUserForm } from './components'
 
 
 export default function Router () {
