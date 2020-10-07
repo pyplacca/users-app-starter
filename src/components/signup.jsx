@@ -12,7 +12,7 @@ class SignUp extends React.Component {
 
 	signInUser (event) {
 		event.preventDefault()
-		const {signup, history} = this.props
+		const {signup} = this.props
 		signup(event.target.elements, 'email')
 	}
 
