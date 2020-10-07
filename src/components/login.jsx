@@ -7,6 +7,9 @@ import { Redirect } from 'react-router-dom';
 class Login extends React.Component {
 	constructor(props) {
 		super(props)
+		this.state = {
+			signupInstead: false
+		}
 		this.LoginUser = this.LoginUser.bind(this)
 	}
 
@@ -25,7 +28,7 @@ class Login extends React.Component {
 				return <Redirect to={{pathname: '/'}} />
 			}
 		}
-		return (
+		return !this.state.signupInstead ? (
 			<form
 				onSubmit={this.LoginUser}
 			>
@@ -57,17 +60,22 @@ class Login extends React.Component {
 					/>
 				</div>
 				<input type="submit" value="Log In"/>
-				<a
-					href="./signup"
+				<p
 					style={{
 						marginTop: "12px",
 						textAlign: "center",
 						display: "block",
-						textDecoration: "none"
+						textDecoration: "none",
+						cursor: "pointer",
+						color: "var(--color-2)"
 					}}
-				>Don't have an account? Create one.</a>
+					onClick={() => {
+						this.setState({signupInstead: true})
+					}}
+				>Don't have an account? Create one.</p>
 			</form>
-		)
+		) :
+		<Redirect to={{pathname: '/signup'}} />
 	}
 }
 

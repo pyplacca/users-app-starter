@@ -7,6 +7,9 @@ import { Redirect } from 'react-router-dom';
 class SignUp extends React.Component {
 	constructor(props) {
 		super(props)
+		this.state = {
+			loginInstead: false
+		}
 		this.signInUser = this.signInUser.bind(this)
 	}
 
@@ -26,7 +29,7 @@ class SignUp extends React.Component {
 				return <Redirect to={{pathname: '/'}} />
 			}
 		}
-		return (
+		return !this.state.loginInstead ? (
 			<form
 				onSubmit={this.signInUser}
 			>
@@ -62,9 +65,9 @@ class SignUp extends React.Component {
 						backgroundImage: "url(https://seeklogo.net/wp-content/uploads/2015/09/google-favicon-vector.png)",
 						"--size": "25px",
 						backgroundSize: "var(--size)",
-						backgroundPosition: "12px center",
+						backgroundPosition: "17px center",
 						backgroundRepeat: "no-repeat",
-						padding: "12px 12px 12px calc(var(--size) + 12px) ",
+						padding: "17px 17px 17px calc(var(--size) + 17px) ",
 						borderRadius: "6px",
 						border: "none",
 						textTransform: "uppercase",
@@ -77,17 +80,22 @@ class SignUp extends React.Component {
 				>
 					Sign Up with Google
 				</button>
-				<a
-					href="./login"
+				<p
 					style={{
 						marginTop: "12px",
 						textAlign: "center",
 						display: "block",
-						textDecoration: "none"
+						textDecoration: "none",
+						cursor: "pointer",
+						color: "var(--color-2)"
 					}}
-				>Already have an account? Login instead</a>
+					onClick={() => {
+						this.setState({loginInstead: true})
+					}}
+				>Already have an account? Login instead</p>
 			</form>
-		)
+		) :
+		<Redirect to={{pathname: '/login'}} />
 	}
 }
 
