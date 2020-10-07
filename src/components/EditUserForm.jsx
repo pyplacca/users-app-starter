@@ -58,7 +58,7 @@ class EditUserForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	user: state.users.find(user => user.id === ownProps.match.params.id)
+	user: state.usersReducer.users.find(user => user.id === ownProps.match.params.id)
 })
 
 const mapDispatchToProps = {

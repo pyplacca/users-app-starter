@@ -42,7 +42,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-	users: state.users
+	users: state.usersReducer.users
 })
 
 export default connect(mapStateToProps, { getUsers })(App);
