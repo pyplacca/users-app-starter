@@ -4,29 +4,7 @@ import './index.css';
 import Router from './Router';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import { createStore, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { getFirebase, reactReduxFirebase } from 'react-redux-firebase';
-import { getFirestore, reduxFirestore } from 'redux-firestore';
-import firebase from './firebase/config';
-import usersReducer from './store/reducer';
-
-
-const store = createStore(
-	usersReducer,
-	// middleware(s)
-	compose(
-		// thunk adds extra functionality to our app and this setup syncs our store with firebase
-		reduxFirestore(firebase),
-		applyMiddleware(thunk.withExtraArgument({
-			getFirestore,
-			getFirebase
-		})),
-		reactReduxFirebase(firebase),
-		// setup firestore and firebase to work with our actions
-	)
-	// enhancer(s)
-);
+import store from './store/config'
 
 ReactDOM.render(
 	<React.StrictMode>
