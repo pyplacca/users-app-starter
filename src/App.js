@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { connect } from 'react-redux'
 import { UserItem, UserForm } from "./components"
-import { getUsers } from './store/actions'
+import { getUsers, signout } from './store/actions'
 
 
 class App extends React.Component {
@@ -13,8 +13,21 @@ class App extends React.Component {
 
 	render() {
 		const {users} = this.props
-		return (
-			<div className="App">
+		return ([
+			<nav style={{
+				display: "flex",
+				flexDirection: "row-reverse",
+			}} key={1}>
+				<p
+					style={{
+						fontFamily: "Roboto",
+						padding: "20px",
+						cursor: "pointer"
+					}}
+					onClick={() => this.props.signout()}
+				>Logout</p>
+			</nav>,
+			<div className="App" key={2}>
 				<div className="App__user-form_container">
 					<UserForm/>
 				</div>
@@ -36,7 +49,7 @@ class App extends React.Component {
 					</div>
 				</div>
 			</div>
-		);
+		]);
 	}
 }
 
@@ -44,4 +57,4 @@ const mapStateToProps = (state) => ({
 	users: state.usersReducer.users
 })
 
-export default connect(mapStateToProps, { getUsers })(App);
+export default connect(mapStateToProps, { getUsers, signout })(App);
